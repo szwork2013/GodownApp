@@ -1,0 +1,27 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<div class="text-center">
+	<div class="login-logo-container">
+        <h4>Warehousing Services</h4>
+		<img src="img/wh-logo.png" width="200">
+	</div>
+
+	<!--<p class="login-text">Sign-In</p>-->
+	<form class="col-md-4 col-md-offset-4">
+		<input type="text" class="form-control login-field username" placeholder="Enter email" data-ng-model="user.email">
+		<input type="password" class="form-control login-field password" placeholder="Password" data-ng-model="user.password">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="chkRememberMe" ng-model="remember" ng-checked="{{remember}}"/> Remember Me
+            </label>
+        </div>
+		<input type="button" value="SIGN IN" class="btn-signin btn-block" data-ng-click="signin(user)">
+		<!--<label class="pull-left login-text"><input type="checkbox"> Remember me</label>-->
+		<!--<a href="#" class="pull-right login-text">Forgot password</a>-->
+	</form>
+	<!--<span class="clearfix"></span>-->
+	<!--<div class="col-md-4 col-md-offset-4">-->
+		<!--<p class="or">OR</p>-->
+		<!--<a href="#/register"><input type="button" value="REGISTER" class="btn-register btn-block"></a> -->
+	<!--</div>-->
+</div>
+

@@ -1,0 +1,48 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<div class="container">
+    <div header></div>
+    <div class="form">
+        <form class="form-horizontal">
+            <h2>Room</h2><br>
+
+            <div class="form-group" id="selectBox1" data-ng-show="showCompanyDropDown">
+                <label for="select1" class="col-sm-2 col-sm-offset-3 control-label">Company: </label>
+                <mycombo id="select1" class="selectpicker" ng-model='record.company_id' route="company" data-live-search="true" data-style="btn-default"></mycombo>
+
+            </div>
+
+            <div class="form-group">
+                <label for="Code" class="col-sm-2 col-sm-offset-3 control-label">Code: </label>
+                <input type="text" id="Code" class="form-control" ng-model="record.code" style="width:300px;" placeholder="Code"/>
+            </div>
+            <div class="form-group">
+                <label for="room" class="col-sm-2 col-sm-offset-3 control-label">Room No: </label>
+                <input type="text" id="room" class="form-control" ng-model="record.name" style="width:300px;" placeholder="Room No"/>
+            </div>
+            <div class="form-group" >
+                <label for="room_acc" class="col-sm-2 col-sm-offset-3 control-label">Account Link: </label>
+                <mycombo id="room_acc" name="room_acc" class="selectpicker" ng-model='record.coa_id' route="coa"  data-live-search="true" data-style="btn-default"></mycombo>
+
+            </div>
+            <div class="form-group">
+                <label for="Area" class="col-sm-2 col-sm-offset-3 control-label">Area: </label>
+                <input type="text" id="Area" class="form-control" ng-model="record.area" style="width:300px;" placeholder="Area"/>
+            </div>
+            <div class="form-group">
+                <label for="Rate" class="col-sm-2 col-sm-offset-3 control-label">Rate: </label>
+                <input type="text" id="Rate" class="form-control" ng-model="record.rate" style="width:300px;" placeholder="Rate"/>
+            </div>
+            <div class="form-group">
+                <label for="Rent" class="col-sm-2 col-sm-offset-3 control-label">Rent: </label>
+                <input type="text" id="Rent" class="form-control" ng-model="record.rent" style="width:300px;" placeholder="Rent"/>
+            </div>
+            <div class="btn-group col-sm-offset-5">
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="!EditMode" data-ng-click="add(record)">Save</a>
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="EditMode" ng-click="update(record)">Update</a>
+                <a class="btn btn-primary"  ng-click="cancel()">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>

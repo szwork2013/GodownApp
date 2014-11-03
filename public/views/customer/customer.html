@@ -1,0 +1,68 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<div class="container">
+    <div header></div>
+    <div class="form">
+        <form class="form-horizontal">
+            <h2>Customer</h2><br>
+            <div class="form-group">
+                <label for="Code" class="col-sm-2 col-sm-offset-3 control-label">Code: </label>
+                <input type="text" id="Code" class="form-control" value="HR2" data-ng-model="record.code" style="width:300px;" placeholder="Code"/>
+            </div>
+            <div class="form-group">
+                <label for="Name" class="col-sm-2 col-sm-offset-3 control-label">Name: </label>
+                <input type="text" id="Name" class="form-control" value="" data-ng-model="record.name"style="width:300px;" placeholder="Name"/>
+            </div>
+            <div class="form-group" >
+                <label for="cust_acc" class="col-sm-2 col-sm-offset-2 control-label">Account Link: </label>
+                <mycombo id="cust_acc" name="cust_acc" class="selectpicker" ng-model='record.coa_id' route="coa"  data-live-search="true" data-style="btn-default"></mycombo>
+
+            </div>
+            <div class="form-group">
+                <label for="NIC" class="col-sm-2 col-sm-offset-3 control-label">NIC: </label>
+                <input type="text" id="NIC" class="form-control" value="" data-ng-model="record.nic" style="width:300px;" placeholder="NIC"/>
+            </div>
+            <div class="form-group">
+                <label for="OffAdd" class="col-sm-2 col-sm-offset-3 control-label">Official Address: </label>
+                <input type="text" id="OffAdd" class="form-control" value="" data-ng-model="record.address" style="width:300px;" placeholder="Address"/>
+            </div>
+            <div class="form-group">
+                <label for="godownno" class="col-sm-2 col-sm-offset-3 control-label">Godown Plot No: </label>
+                <input type="text" id="godownno" class="form-control" data-ng-model="record.plot" value="" style="width:300px;" placeholder="Code"/>
+            </div>
+            <div class="form-group">
+                <label for="Phone1" class="col-sm-2 col-sm-offset-3 control-label">Phone1: </label>
+                <input type="tel" id="Phone1" class="form-control" value="" style="width:300px;" data-ng-model="record.phone1" placeholder="Phone1"/>
+            </div>
+            <div class="form-group">
+                <label for="Phone2" class="col-sm-2 col-sm-offset-3 control-label">Phone2: </label>
+                <input type="tel" id="Phone2" class="form-control" value="" style="width:300px;" data-ng-model="record.phone2" placeholder="Phone2"/>
+            </div>
+            <div class="form-group">
+                <label for="Phone3" class="col-sm-2 col-sm-offset-3 control-label">Phone3: </label>
+                <input type="tel" id="Phone3" class="form-control" value="" style="width:300px;" data-ng-model="record.phone3" placeholder="Phone3"/>
+            </div>
+            <div class="form-group">
+                <label for="Mobile" class="col-sm-2 col-sm-offset-3 control-label">Mobile: </label>
+                <input type="text" id="Mobile" class="form-control" value="" data-ng-model="record.mobile" style="width:300px;" placeholder="Mobile"/>
+            </div>
+            <div class="form-group">
+                <label for="Fax" class="col-sm-2 col-sm-offset-3 control-label">Fax: </label>
+                <input type="text" id="Fax" class="form-control" value="" data-ng-model="record.fax" style="width:300px;" placeholder="Fax"/>
+            </div>
+            <div class="form-group">
+                <label for="email1" class="col-sm-2 col-sm-offset-3 control-label">Email: </label>
+                <input type="email" id="email1" class="form-control" value="" data-ng-model="record.email" style="width:300px;" placeholder="Email"/>
+            </div>
+            <div class="form-group">
+                <label for="ntn" class="col-sm-2 col-sm-offset-3 control-label">NTN: </label>
+                <input type="text" id="ntn" class="form-control" value="" data-ng-model="record.ntn" style="width:300px;" placeholder="NTN"/>
+            </div>
+            <div class="btn-group col-sm-offset-5">
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="!EditMode" data-ng-click="add(record)">Save</a>
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="EditMode" ng-click="update(record)">Update</a>
+                <a class="btn btn-primary"  ng-click="cancel()">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>

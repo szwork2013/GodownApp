@@ -1,0 +1,110 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<style>
+    .table-condensed > thead > tr > th,
+    .table-condensed > tbody > tr > th,
+    .table-condensed > tfoot > tr > th,
+    .table-condensed > thead > tr > td,
+    .table-condensed > tbody > tr > td,
+    .table-condensed > tfoot > tr > td {
+        padding: 1px;
+        height: 20px;
+    }
+    table > thead > tr
+    {
+        height: 20px;
+
+    }
+    /*.glyphicon-plus-sign*/
+    /*{*/
+        /*-webkit-transform:scale(2.0,2.0);*/
+        /*position: absolute;*/
+        /*left: 10px;*/
+        /*top: 10px;*/
+    /*}*/
+    /*.glyphicon-refresh*/
+    /*{*/
+        /*-webkit-transform:scale(2.0,2.0);*/
+        /*position: absolute;*/
+        /*left: 22px;*/
+        /*top: 10px;*/
+    /*}*/
+    /*.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}*/
+    /*.navbar {min-height:32px !important}*/
+
+    .right-inner-addon {
+        position: relative;
+    }
+    .right-inner-addon input {
+        padding-right: 30px;
+    }
+    .right-inner-addon i {
+        position: absolute;
+        right: 0px;
+        padding: 10px 12px;
+        pointer-events: none;
+    }
+</style>
+<div>
+    <div header></div>
+    <div>
+        <div class="well">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+                            <span class="sr-only">Company</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Company</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                        <ul class="nav navbar-nav">
+
+                            <li><a href="#"  ng-click="add()" ><span class="glyphicon glyphicon-plus-sign" ></span>&nbsp;New</a></li>
+                            <li><a href="#"  ng-click="refresh()" ><span class="glyphicon glyphicon-refresh" ></span>&nbsp;Refresh</a></li>
+                            <li class="navbar-form">
+                                <div class="right-inner-addon">
+                                    <i class="icon-search"></i>
+                                    <input type="search" ng-model="filterText"
+                                           class="form-control"
+                                           placeholder="Search" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+
+            <table class="table table-responsive table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>NIC</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>NTN</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in listData | filter:filterText">
+                    <td>{{record.code}}</td>
+                    <td>{{record.name}}</td>
+                    <td>{{record.nic}}</td>
+                    <td>{{record.phone1}}</td>
+                    <td>{{record.email}}</td>
+                    <td>{{record.ntn}}</td>
+                    <td><a ng-click="edit(record)" class="btn btn-small btn-primary">Edit</a></td>
+                    <td><a ng-click="delete(record)" class="btn btn-small  btn-danger">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

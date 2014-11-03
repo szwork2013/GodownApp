@@ -1,0 +1,60 @@
+<style>
+    .bor{
+        border:0px;
+        width: 50px;
+        }
+
+
+</style>
+
+
+<button  class="btn btn-small btn-primary col-sm-offset-6" ng-click="thisHideMe=true;entity=reset()" style="display: inline-block;margin-bottom: 1%;margin-left: 22%;">Add Entity</button>
+<button  class="btn btn-small btn-primary col-sm-offset-1" ng-click="thisHideMe=false" style="display: inline-block;margin-bottom: 1%;margin-left: -21.4%;height: 32px;width: 93px">{{record.owners.length}}</button>
+<div ng-show="thisHideMe" style="margin-top: 4%">
+    <form>
+        <div  class="form-group">
+            <label for="entity_acc" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">Account Link: </label>
+            <mycombo id="entity_acc" name="entity_acc" class="selectpicker" ng-model='entity.coa_id' route="coa" ng-blur="getblur()" data-live-search="true" data-style="btn-default"></mycombo>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 col-sm-offset-2 control-label">code: </label>
+            <edit-inline  ng-model="entity.code" ng-blur="getBlur(entity)" placeholder="Code"></edit-inline>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 col-sm-offset-2 control-label">Name: </label>
+            <edit-inline  ng-model="entity.name" ng-blur="getBlur(entity)" placeholder="Name"></edit-inline>
+        </div>
+       <!-- <div class="" style="margin-bottom: 15px">
+            <label for="CodeName" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">code </label>
+            <input type="text" value="hello world" data-ng-model="entity.code" ng-blur="isBlur()"/>
+          &lt;!&ndash;  <input type="text" id="CodeName"  ng-class="{bor:isData}" data-ng-model="record.code" ng-blur='getBlur(record.code)' style=" display: inline-block" placeholder="Code" edit-inline/>&ndash;&gt;
+            <label for="CodeName" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">name</label>
+            <edit-inline  ng-model="record.code" ng-blur="isBlur()" placeholder="Password"></edit-inline>
+            &lt;!&ndash;<div>
+            <input type="text" id="CodeName" class="form-control" data-ng-model="record.code"  style=" width:300px;display:inline" placeholder="Code" edit-inline/>
+            <button class="glyphicon glyphicon-trash"></button>
+            </div>&ndash;&gt;
+            &lt;!&ndash;<button ng-click="saveEntity(entity)"  class="btn btn-small btn-primary" >save</button>
+            <button ng-click="toggle()"  class="btn btn-small btn-primary" >X</button>&ndash;&gt;
+        </div>-->
+    </form>
+</div>
+
+ <div ng-hide="thisHideMe" >
+     <form >
+     <div class="form-group">
+         <ul>
+         <li data-ng-repeat="item in record.owners" data-ng-click="$parent.thisHideMe=true">
+             <span >{{item.name}}</span>
+           <span >{{item.code}}</span>
+
+         </li>
+         </ul>
+     </div>
+
+
+
+     </form>
+
+
+ </div>

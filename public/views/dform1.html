@@ -1,0 +1,32 @@
+<style>
+    .bor{
+        border:0px;
+        width: 50px;
+
+    }
+
+
+</style>
+
+
+<button ng-hide="thisHideMe" class="btn btn-small btn-primary col-sm-offset-6" ng-click="toggle()" style="display: inline-block;margin-bottom: 1%; margin-left: 51%">Add Entity</button>
+<div ng-show="thisHideMe" style="margin-top: 4%">
+    <form>
+        <div  class="" style="margin-bottom: 15px">
+            <label for="entity_acc" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">Account Link: </label>
+            <mycombo id="entity_acc" name="entity_acc" class="selectpicker" ng-model='entity.coa_id' route="coa"  data-live-search="true" data-style="btn-default"></mycombo>
+        </div>
+        <div class="" style="margin-bottom: 15px">
+            <label for="CodeName" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">Phone No: </label>
+            <input type="text" value="hello world" data-ng-model="record.code"/>
+          <!--  <input type="text" id="CodeName"  ng-class="{bor:isData}" data-ng-model="record.code" ng-blur='getBlur(record.code)' style=" display: inline-block" placeholder="Code" edit-inline/>-->
+            <edit-inline ng-model="record.code" placeholder="Password"></edit-inline>
+            <!--<div>
+            <input type="text" id="CodeName" class="form-control" data-ng-model="record.code"  style=" width:300px;display:inline" placeholder="Code" edit-inline/>
+            <button class="glyphicon glyphicon-trash"></button>
+            </div>-->
+            <button ng-click="saveEntity(entity)"  class="btn btn-small btn-primary" >save</button>
+            <button ng-click="toggle()"  class="btn btn-small btn-primary" >X</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,101 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<div class="container">
+    <div header></div>
+<div class="form">
+    <form class="form-horizontal">
+
+        <myform></myform>
+
+        <h3 style="text-align: center;">Company</h3><br>
+
+        <div  ng-show="entityArray.length" class="col-sm-offset-2" style="margin-bottom: 1%;display: inline-block;position: absolute;left: 18.3%;top: 30%;">
+            <select ng-model="yrecord" ng-options="a.coa_id as a.code for a in entityArray">  <option value="">-- Select One --</option>
+            </select>
+        </div>
+
+
+       <!-- <button ng-hide="thisHideMe" class="btn btn-small btn-primary col-sm-offset-6" ng-click="toggle()" style="display: inline-block;margin-bottom: 1%; margin-left: 51%">Add Entity</button>
+        <div ng-show="thisHideMe" style="margin-top: 4%">
+            <form>
+            <div class="" style="margin-bottom: 15px">
+                <label for="entity_acc" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">Account Link: </label>
+                <mycombo id="entity_acc" name="entity_acc" class="selectpicker" ng-model='entity.coa_id' route="coa"  data-live-search="true" data-style="btn-default"></mycombo>
+            </div>
+            <div class="" style="margin-bottom: 15px">
+                <label for="CodeName" class="col-sm-2 col-sm-offset-2 control-label" style="display: inline-block">Phone No: </label>
+                <input type="text" id="CodeName" class="form-control"  data-ng-model="record.code" style="width:300px; display: inline-block" placeholder="Code"/>
+                <button ng-click="saveEntity(entity)"  class="btn btn-small btn-primary" >save</button>
+                <button ng-click="toggle()"  class="btn btn-small btn-primary" >X</button>
+            </div>
+            </form>
+        </div>-->
+        <hate></hate>
+        <div class="form-group">
+            <label for="Code" class="col-sm-2 col-sm-offset-2 control-label">Code: </label>
+            <input type="text" id="Code" class="form-control"  data-ng-model="record.code" style="width:300px;" placeholder="Code"/>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 col-sm-offset-2 control-label">Name: </label>
+            <input type="text" id="name" class="form-control"   data-ng-model="record.name"  style="width:300px;" placeholder="Name"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="col-sm-2 col-sm-offset-2 control-label">Password: </label>
+            <input type="password" id="password" class="form-control"   data-ng-model="record.password"  style="width:300px;" placeholder="Password"/>
+        </div>
+        <div class="form-group" >
+            <label for="owner_acc" class="col-sm-2 col-sm-offset-2 control-label">Account Link: </label>
+            <mycombo id="owner_acc" name="owner_acc" class="selectpicker" ng-model='record.coa_id' route="coa"  data-live-search="true" data-style="btn-default"></mycombo>
+
+        </div>
+        <div class="form-group">
+            <label for="NIC" class="col-sm-2 col-sm-offset-2 control-label">NIC: </label>
+            <input type="text" id="NIC" class="form-control" value="" ng-model="record.nic" style="width:300px;" placeholder="NIC"/>
+        </div>
+        <div class="form-group">
+            <label for="OffAdd" class="col-sm-2 col-sm-offset-2 control-label">Official Address: </label>
+            <input type="text" id="OffAdd" class="form-control" value="" ng-model="record.address" style="width:300px;" placeholder="Address"/>
+        </div>
+        <div class="form-group">
+            <label for="GodownNo" class="col-sm-2 col-sm-offset-2 control-label">Godown Plot No: </label>
+            <input type="text" id="GodownNo" class="form-control" ng-model="record.plot" value="" style="width:300px;" placeholder="Code"/>
+        </div>
+        <div class="form-group">
+            <label for="Phone1" class="col-sm-2 col-sm-offset-2 control-label">Phone1: </label>
+            <input type="tel" id="Phone1" class="form-control" ng-model="record.phone1" value="" style="width:300px;" placeholder="Phone1"/>
+        </div>
+        <div class="form-group hide fade" id="Phone2Box">
+            <label for="Phone2" class="col-sm-2 col-sm-offset-2 control-label">Phone2: </label>
+            <input type="tel" id="Phone2" class="form-control" ng-model="record.phone2" value="" style="width:300px;" placeholder="Phone2"/>
+        </div>
+        <div class="form-group hide fade" id="Phone3Box">
+            <label for="Phone3" class="col-sm-2 col-sm-offset-2 control-label">Phone3: </label>
+            <input type="tel" id="Phone3" class="form-control"  ng-model="record.phone3" style="width:300px;" placeholder="Phone3"/>
+        </div>
+        <div class="form-group">
+            <label for="Mobile" class="col-sm-2 col-sm-offset-2 control-label">Mobile: </label>
+            <input type="text" id="Mobile" class="form-control" ng-model="record.mobile" style="width:300px;" placeholder="Mobile"/>
+        </div>
+        <div class="form-group">
+            <label for="Fax" class="col-sm-2 col-sm-offset-2 control-label">Fax: </label>
+            <input type="text" id="Fax" class="form-control"  ng-model="record.fax" style="width:300px;" placeholder="Fax"/>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="col-sm-2 col-sm-offset-2 control-label">Email: </label>
+            <input type="email" id="Email" class="form-control"  ng-model="record.email" style="width:300px;" placeholder="Email"/>
+        </div>
+        <div class="form-group" id="NTNBox">
+            <label for="NTN" class="col-sm-2 col-sm-offset-2 control-label">NTN: </label>
+            <input type="text" id="NTN" class="form-control"  ng-model="record.ntn" style="width:300px;" placeholder="NTN"/>
+        </div>
+        <div class="btn-group col-sm-offset-4">
+            <a class="btn btn-primary" ng-show="!EditMode" data-ng-click="add(record)">Save</a>
+            <a class="btn btn-primary" style="border-radius: 3px;" ng-show="EditMode" ng-click="update(record)">Update</a>
+            <a class="btn btn-primary"  ng-click="cancel()">Cancel</a>
+        </div>
+    </form>
+
+
+</div>
+</div>
+        {{record}}

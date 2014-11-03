@@ -1,0 +1,111 @@
+<toaster-container toaster-options="{'time-out': 1400}"></toaster-container>
+<div class="container"  ng-keypress="myShow($event)">
+    <div header></div>
+    <div class="form">
+        <form class="form-horizontal">
+            <h2>Agreement</h2><br>
+
+            <div class="form-group">
+                <label for="agreementDate" class="col-sm-2 col-sm-offset-3 control-label">Agreement Date: </label>
+                <!--<input type="text" id="agreementDate" class="form-control"  ng-init="adate=convertDate(record.agreementDate)" data-ng-model="adate" style="width:300px;" placeholder="Date"/>-->
+
+
+                    <p class="input-group">
+                        <input type="text" datepicker-options="dateOptions"
+                               id="agreementDate" class="form-control"
+                               ng-init="record.agreementDate=convertDate(record.agreementDate)"
+                               data-ng-model="record.agreementDate"
+                               datepicker-popup="MM/dd/yyyy"  ng-click="open($event)"  is-open="opened"
+                           ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+
+
+            </div>
+            <div class="form-group">
+                <label for="Details" class="col-sm-2 col-sm-offset-3 control-label">Details: </label>
+                <textarea type="text" id="Details" class="form-control" data-ng-model="record.details" style="width:300px;" placeholder="Details"></textarea>
+            </div>
+            <div class="form-group" id="selectBox1" data-show="false" data-ng-show="showCompanyDropDown">
+                <label for="select1" class="col-sm-2 col-sm-offset-3 control-label">Company: </label>
+                <mycombo id="select1" class="selectpicker" ng-model='record.company_id' route="company" data-live-search="true" data-style="btn-default"></mycombo>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="godown" class="col-sm-2 col-sm-offset-3 control-label">Godown: </label>
+                <mycombo  id="godown" name="godown" class="selectpicker" filter="{{record.company_id}}" ng-model='record.godown_id' route="godown" data-live-search="true" data-style="btn-default"></mycombo>
+            </div>
+            <div class="form-group">
+                <label for="room" class="col-sm-2 col-sm-offset-3 control-label">Room: </label>
+                <mycombo id="room" name="room" class="selectpicker"  filter="{{record.company_id}}" ng-model='record.room_id' route="room" data-live-search="true" data-style="btn-default"></mycombo>
+            </div>
+
+
+            <div class="form-group" id="selectBox1">
+                <label for="customer" class="col-sm-2 col-sm-offset-3 control-label">Tenant: </label>
+                <mycombo id="customer" name="customer" class="selectpicker" ng-model='record.customer_id' route="customer" data-live-search="true" data-style="btn-default"></mycombo>
+
+            </div>
+
+            <div class="form-group">
+                <label for="offRent" class="col-sm-2 col-sm-offset-3 control-label">Official Rent: </label>
+                <input type="number" id="offRent" class="form-control" value="" data-ng-model="record.orent" style="width:300px;" placeholder="Official Rent"/>
+                <label class="control-label">{{agree.officialCon}} </label>
+            </div>
+            <div class="form-group" data-ng-show="clickShow">
+                <label for="unOffRent" class="col-sm-2 col-sm-offset-3 control-label">Un-Official Rent: </label>
+                <input type="number" id="unOffRent" class="form-control" value="120" data-ng-model="record.urent" style="width:300px;" placeholder="Un-Official Rent"/>
+            </div>
+            <div class="form-group">
+                <label for="totalRent" class="col-sm-2 col-sm-offset-3 control-label">Total Rent: </label>
+                <input type="number" id="totalRent" class="form-control" value="{{record.totalRent=record.orent+record.urent}}" data-ng-model="record.totalRent" style="width:300px;" placeholder="Total Rent" disabled/>
+            </div>
+
+            <div class="form-group">
+                <label for="startDate" class="col-sm-2 col-sm-offset-3 control-label">Start Date: </label>
+                <!--<input type="text" id="startDate" class="form-control"   ng-init="bdate=convertDate(record.startDate)" data-ng-model="bdate"   style="width:300px;" placeholder="Start Date"/>-->
+                <p class="input-group">
+                    <input type="text" datepicker-options="dateOptions"
+                           id="startDate" class="form-control"
+                           ng-init="record.startDate=convertDate(record.startDate)"
+                           data-ng-model="record.startDate"
+                           datepicker-popup="MM/dd/yyyy"  ng-click="open($event)"  is-open="opened"
+                           ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                </p>
+
+            </div>
+            <div class="form-group">
+                <label for="endDate" class="col-sm-2 col-sm-offset-3 control-label">End Date: </label>
+                <!--<input type="text" id="endDate" class="form-control"   ng-init="cdate=convertDate(record.endDate)" ng-model="cdate" style="width:300px;" placeholder="End Date"/>-->
+                <p class="input-group">
+                    <input type="text" datepicker-options="dateOptions"
+                           id="endDate" class="form-control"
+                           ng-init="record.endDate=convertDate(record.endDate)"
+                           data-ng-model="record.endDate"
+                           datepicker-popup="MM/dd/yyyy"  ng-click="open($event)"  is-open="opened"
+                           ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                </p>
+            </div>
+            <div class="btn-group col-sm-offset-5">
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="!EditMode" data-ng-click="add(record)">Save</a>
+                <a class="btn btn-primary" style="border-radius: 3px;" ng-show="EditMode" ng-click="update(record)">Update</a>
+                <a class="btn btn-primary"  ng-click="cancel()">Cancel</a>
+            </div>
+        </form>
+
+
+    </div>
+<!--{{clickShow}}-->
+    <!--{{myShow}}-->
+    {{record}}
+</div>

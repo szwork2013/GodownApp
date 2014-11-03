@@ -1,0 +1,188 @@
+<style>
+    .table-condensed > thead > tr > th,
+    .table-condensed > tbody > tr > th,
+    .table-condensed > tfoot > tr > th,
+    .table-condensed > thead > tr > td,
+    .table-condensed > tbody > tr > td,
+    .table-condensed > tfoot > tr > td {
+        padding: 1px;
+        height: 20px;
+    }
+    table > thead > tr
+    {
+        height: 20px;
+
+    }
+    .right-inner-addon {
+        position: relative;
+    }
+    .right-inner-addon input {
+        padding-right: 30px;
+    }
+    .right-inner-addon i {
+        position: absolute;
+        right: 0px;
+        padding: 10px 12px;
+        pointer-events: none;
+    }
+    [ng-cloak] {
+        display: none;
+    }
+  .coaTree {
+        box-sizing: border-box;
+    }
+    .coaTree .deleted{
+        text-decoration:line-through;
+    }
+    .coaTree .new{
+        font-style: italic;
+    }
+    .coaTree .modified{
+        font-weight: bold ;
+    }
+    .coaTree  ol {
+        margin:4px 0;
+        border: 0 none transparent;
+        padding: 0;
+        background:#eee;
+    }
+    .coaTree li {
+        list-style:none;
+        margin: 1px;
+        border: 1px solid #ddd;
+        padding: 8px 8px 4px 8px;
+        background: #fff;
+    }
+    .coaTree .ui-sortable li {
+        cursor: move;
+    }
+    .coaTree .live input, .shadow input {
+        margin: 0;
+        border: 1px solid #ddd;
+        padding: 1px;
+        font: inherit;
+
+        height:2em;
+    }
+    .coaTree .ui-state-highlight {
+        border: 1px solid #fc0;
+        background: #ffe;
+    }
+    .coaTree .live, .shadow {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+    }
+    .coaTree .shadow {
+        opacity: 0.7;
+    }
+    .coaTree .debug {
+        clear: both;
+    }
+    .coaTree .debug textarea {
+        width: 100%;
+        height: 40em;
+        font: 10px/13px monospace;
+    }
+    .coaTree textarea, input {
+        outline: none;
+    }
+    .coaTree .pregnant {
+        border: 1px solid #ddd;
+    }
+    .coaTree .bg0 { background:lightskyblue; }
+    .coaTree .bg1 { background:lightpink; }
+    .coaTree .bg2 { background:lightgreen; }
+    .coaTree .bg3 { background:lightsalmon; }
+    .coaTree .bg4 { background:lightgrey; }
+    .coaTree .bg5 { background:lightcyan; }
+    .coaTree .minimized > ol > li { display:none; }
+    .coaTree .minimized > ol {   border: 0 none transparent; }
+    .coaTree .toggle { border: 0 none transparent; background:transparent; width:2em; color:#aaa; }
+    .coaTree button { cursor: pointer }
+
+</style>
+<div>
+    <div header></div>
+    <div>
+        <div class="well">
+
+        <div ng-controller="coaCtrl" >
+
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+                        <span class="sr-only">Chart of Accounts</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Chart of Accounts</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#"  ng-click="addChild(data)" ><span class="glyphicon glyphicon-plus-sign" ></span>&nbsp;New Account Head</a></li>
+                        <li><a href="#"  ng-click="reload()" ><span class="glyphicon glyphicon-refresh" ></span>&nbsp;Refresh</a></li>
+                        <li><a href="#"  ng-click="save()" ><span class="glyphicon glyphicon-save" ></span>&nbsp;Save</a></li>
+                        <li><a href="#"  ng-click="cancel()" ><span class="glyphicon glyphicon-remove" ></span>&nbsp;Cancel</a></li>
+
+                        <!--<li class="navbar-form">-->
+                            <!--<div class="right-inner-addon">-->
+                                <!--<i class="icon-search"></i>-->
+                                <!--<input type="search" ng-model="filterText"-->
+                                       <!--class="form-control"-->
+                                       <!--placeholder="Search" />-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="coaTree">
+        <div class="live ">
+            <ol>
+                <li ya-tree="child in data.children at ol" ng-class="{minimized:child.minimized}">
+                    <div>
+                        <button class="toggle" ng-click="toggleMinimized(child)" ng-switch on="child.minimized"><span ng-switch-when="true">&#x25B6;</span><span ng-switch-default>&#x25BC;</span></button>
+                        <input ng-model="child.name"  ng-change="change(child)"  />
+                        <button ng-click="addChild(child)">+</button>
+                        <button ng-click="remove(child)">x</button>
+                    </div>
+                    <ol ng-class="{pregnant:child.children.length}"></ol>
+                </li>
+            </ol>
+
+
+        </div>
+        <div class="shadow">
+            <ol>
+                <li ya-tree="child in data.children at ol" class="bg{{$depth%6}}" ng-class="{minimized:child.minimized}" ng-show="child.state!='deleted'">
+                    <div>
+                        <p ng-class="{deleted: child.state=='deleted', new: child.state =='new',modified:child.state=='modified' }">
+                        {{child.name}}</p> <em>({{$depth}})</em>
+                    </div>
+                    <ol ng-class="{pregnant:child.children.length}"></ol>
+                </li>
+            </ol>
+        </div>
+      </div>
+        <!--<div><button ng-click="getJson()">Debug</button></div>-->
+        <!--<div><lable>tree data/to display:</lable>-->
+            <!--{{data}}-->
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<br>-->
+        <!--<div>{{record}}</div>-->
+        <!--<div><lable>db data/to save:</lable>-->
+            <!--{{dbdata}}-->
+        <!--</div>-->
+    </div>
+
+        </div>
+    </div>
+</div>
